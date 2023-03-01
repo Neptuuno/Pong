@@ -14,37 +14,75 @@ namespace WindowsFormsApp2
     {
         int X = 2;
         int Y = 2;
+
         public Form1()
         {
             InitializeComponent();
             timer1.Enabled = true;
             DoubleBuffered = true;
+            KeyPreview = true;
         }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Timer1_Tick(object sender, EventArgs e)
         {
             if (button1.Location.Y + button1.Height >= ClientSize.Height)
             {
                 Y *= -1;
             }
+
             if (button1.Location.X + button1.Width >= ClientSize.Width)
             {
                 X *= -1;
             }
+
             if (button1.Location.X <= 0)
             {
                 X *= -1;
             }
+
             if (button1.Location.Y <= 0)
             {
                 Y *= -1;
             }
+
             button1.Location = new Point(button1.Location.X + X, button1.Location.Y + Y);
+            
+            if (button1.Bounds.IntersectsWith(button2.Bounds))
+            {
+                X *= -1;
+                Y *= -1;
+            }
+
+            if (button1.Bounds.IntersectsWith(button3.Bounds))
+            {
+                X *= -1;
+                Y *= -1;
+            }
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            int y1 = button2.Location.Y;
+            int y2 = button3.Location.Y;
+            
+            if (e.KeyCode == Keys.W)
+            {
+                y1 -= 8;
+            }
+            if (e.KeyCode == Keys.S)
+            {
+                y1 += 8;
+            }
+            if (e.KeyCode == Keys.I)
+            {
+                y2 -= 8;
+            }
+            if (e.KeyCode == Keys.K)
+            {
+                y2 += 8;
+            }
+            
+            button2.Location = new Point(button2.Location.X, y1);
+            button3.Location = new Point(button3.Location.X, y2);
         }
     }
 }
