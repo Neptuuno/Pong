@@ -16,7 +16,7 @@ namespace WindowsFormsApp2
         private int _y = 2;
         private int gPoints = 0;
         private int rPoints = 0;
-        private short rounds = 1;
+        private int rounds = 1;
         private Point ballLocation = new Point(322, 225);
 
         public Form1()
@@ -29,16 +29,12 @@ namespace WindowsFormsApp2
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            if (rounds % 10 == 0)
-            {
-                _x++;
-                _y++;
-            }
             redLabel.Text = rPoints.ToString();
             greenLabel.Text = gPoints.ToString();
             if (button1.Location.Y + button1.Height >= ClientSize.Height)
             {
                 _y *= -1;
+                rounds++;
             }
 
             if (button1.Location.X + button1.Width >= ClientSize.Width)
@@ -58,6 +54,7 @@ namespace WindowsFormsApp2
             if (button1.Location.Y <= 0)
             {
                 _y *= -1;
+                rounds++;
             }
 
             button1.Location = new Point(button1.Location.X + _x, button1.Location.Y + _y);
@@ -72,6 +69,11 @@ namespace WindowsFormsApp2
             {
                 _x *= -1;
                 _y *= -1;
+            }
+            if (rounds % 20 == 0)
+            {
+                _x++;
+                _y++;
             }
         }
 
