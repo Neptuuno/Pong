@@ -22,6 +22,7 @@ namespace WindowsFormsApp2
             DoubleBuffered = true;
             KeyPreview = true;
         }
+
         private void Timer1_Tick(object sender, EventArgs e)
         {
             if (button1.Location.Y + button1.Height >= ClientSize.Height)
@@ -45,7 +46,7 @@ namespace WindowsFormsApp2
             }
 
             button1.Location = new Point(button1.Location.X + X, button1.Location.Y + Y);
-            
+
             if (button1.Bounds.IntersectsWith(button2.Bounds))
             {
                 X *= -1;
@@ -63,24 +64,31 @@ namespace WindowsFormsApp2
         {
             int y1 = button2.Location.Y;
             int y2 = button3.Location.Y;
-            
+
             if (e.KeyCode == Keys.W)
             {
-                y1 -= 8;
+                if (button2.Location.Y > 0)
+                    y1 -= 8;
             }
+
             if (e.KeyCode == Keys.S)
             {
-                y1 += 8;
+                if (button2.Location.Y + button2.Height < ClientSize.Height)
+                    y1 += 8;
             }
+
             if (e.KeyCode == Keys.I)
             {
-                y2 -= 8;
+                if (button3.Location.Y > 0)
+                    y2 -= 8;
             }
+
             if (e.KeyCode == Keys.K)
             {
-                y2 += 8;
+                if (button3.Location.Y + button2.Height < ClientSize.Height)
+                    y2 += 8;
             }
-            
+
             button2.Location = new Point(button2.Location.X, y1);
             button3.Location = new Point(button3.Location.X, y2);
         }
