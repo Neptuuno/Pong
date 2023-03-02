@@ -35,6 +35,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.greenLabel = new System.Windows.Forms.Label();
+            this.redLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timer1
@@ -45,7 +48,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.DimGray;
-            this.button1.Location = new System.Drawing.Point(310, 225);
+            this.button1.Location = new System.Drawing.Point(322, 225);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(30, 30);
             this.button1.TabIndex = 0;
@@ -54,7 +57,7 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Red;
-            this.button3.Location = new System.Drawing.Point(621, 182);
+            this.button3.Location = new System.Drawing.Point(637, 182);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(33, 117);
             this.button3.TabIndex = 2;
@@ -69,12 +72,48 @@
             this.button2.TabIndex = 3;
             this.button2.UseVisualStyleBackColor = false;
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(299, 57);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 35);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Points";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // greenLabel
+            // 
+            this.greenLabel.BackColor = System.Drawing.Color.Transparent;
+            this.greenLabel.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.greenLabel.Location = new System.Drawing.Point(242, 46);
+            this.greenLabel.Name = "greenLabel";
+            this.greenLabel.Size = new System.Drawing.Size(51, 58);
+            this.greenLabel.TabIndex = 5;
+            this.greenLabel.Text = "0";
+            this.greenLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // redLabel
+            // 
+            this.redLabel.BackColor = System.Drawing.Color.Transparent;
+            this.redLabel.Font = new System.Drawing.Font("Bahnschrift SemiCondensed", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.redLabel.Location = new System.Drawing.Point(388, 46);
+            this.redLabel.Name = "redLabel";
+            this.redLabel.Size = new System.Drawing.Size(51, 58);
+            this.redLabel.TabIndex = 6;
+            this.redLabel.Text = "0";
+            this.redLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(666, 479);
+            this.ClientSize = new System.Drawing.Size(682, 453);
+            this.Controls.Add(this.redLabel);
+            this.Controls.Add(this.greenLabel);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
@@ -87,6 +126,12 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Label redLabel;
+
+        private System.Windows.Forms.Label greenLabel;
+
+        private System.Windows.Forms.Label label1;
 
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;

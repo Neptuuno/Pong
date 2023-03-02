@@ -14,6 +14,8 @@ namespace WindowsFormsApp2
     {
         int X = 2;
         int Y = 2;
+        int gPoints = 0;
+        int rPoints = 0;
 
         public Form1()
         {
@@ -88,7 +90,6 @@ namespace WindowsFormsApp2
                 if (button3.Location.Y + button2.Height < ClientSize.Height)
                     y2 += 8;
             }
-
             button2.Location = new Point(button2.Location.X, y1);
             button3.Location = new Point(button3.Location.X, y2);
         }
