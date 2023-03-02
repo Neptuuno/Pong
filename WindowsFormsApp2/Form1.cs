@@ -12,10 +12,12 @@ namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
-        int X = 2;
-        int Y = 2;
-        int gPoints = 0;
-        int rPoints = 0;
+        private int _x = 2;
+        private int _y = 2;
+        private int gPoints = 0;
+        private int rPoints = 0;
+        private short rounds = 1;
+        private Point ballLocation = new Point(322, 225);
 
         public Form1()
         {
@@ -27,38 +29,49 @@ namespace WindowsFormsApp2
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
+            if (rounds % 10 == 0)
+            {
+                _x++;
+                _y++;
+            }
+            redLabel.Text = rPoints.ToString();
+            greenLabel.Text = gPoints.ToString();
             if (button1.Location.Y + button1.Height >= ClientSize.Height)
             {
-                Y *= -1;
+                _y *= -1;
             }
 
             if (button1.Location.X + button1.Width >= ClientSize.Width)
             {
-                X *= -1;
+                gPoints++;
+                button1.Location = ballLocation;
+                rounds++;
             }
 
             if (button1.Location.X <= 0)
             {
-                X *= -1;
+                rPoints++;
+                button1.Location = ballLocation;
+                rounds++;
             }
 
             if (button1.Location.Y <= 0)
             {
-                Y *= -1;
+                _y *= -1;
             }
 
-            button1.Location = new Point(button1.Location.X + X, button1.Location.Y + Y);
+            button1.Location = new Point(button1.Location.X + _x, button1.Location.Y + _y);
 
             if (button1.Bounds.IntersectsWith(button2.Bounds))
             {
-                X *= -1;
-                Y *= -1;
+                _x *= -1;
+                _y *= -1;
             }
 
             if (button1.Bounds.IntersectsWith(button3.Bounds))
             {
-                X *= -1;
-                Y *= -1;
+                _x *= -1;
+                _y *= -1;
             }
         }
 
@@ -90,6 +103,7 @@ namespace WindowsFormsApp2
                 if (button3.Location.Y + button2.Height < ClientSize.Height)
                     y2 += 8;
             }
+
             button2.Location = new Point(button2.Location.X, y1);
             button3.Location = new Point(button3.Location.X, y2);
         }
