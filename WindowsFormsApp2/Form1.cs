@@ -12,11 +12,10 @@ namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
-        private int _x = 2;
-        private int _y = 2;
+        private int _x = 3;
+        private int _y = 3;
         private int gPoints = 0;
         private int rPoints = 0;
-        private int rounds = 1;
         private Point ballLocation = new Point(322, 225);
 
         public Form1()
@@ -34,27 +33,23 @@ namespace WindowsFormsApp2
             if (button1.Location.Y + button1.Height >= ClientSize.Height)
             {
                 _y *= -1;
-                rounds++;
             }
 
             if (button1.Location.X + button1.Width >= ClientSize.Width)
             {
                 gPoints++;
                 button1.Location = ballLocation;
-                rounds++;
             }
 
             if (button1.Location.X <= 0)
             {
                 rPoints++;
                 button1.Location = ballLocation;
-                rounds++;
             }
 
             if (button1.Location.Y <= 0)
             {
                 _y *= -1;
-                rounds++;
             }
 
             button1.Location = new Point(button1.Location.X + _x, button1.Location.Y + _y);
@@ -62,18 +57,11 @@ namespace WindowsFormsApp2
             if (button1.Bounds.IntersectsWith(button2.Bounds))
             {
                 _x *= -1;
-                _y *= -1;
             }
 
             if (button1.Bounds.IntersectsWith(button3.Bounds))
             {
                 _x *= -1;
-                _y *= -1;
-            }
-            if (rounds % 20 == 0)
-            {
-                _x++;
-                _y++;
             }
         }
 
